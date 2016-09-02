@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <accelerator_adminhtml_acceleratorbackend_index>
+	<reference name="content">
+	  <block type="accelerator/adminhtml_acceleratorbackend" name="acceleratorbackend" template="accelerator/acceleratorbackend.phtml"/>
+	</reference>
+  </accelerator_adminhtml_acceleratorbackend_index>
+</layout>

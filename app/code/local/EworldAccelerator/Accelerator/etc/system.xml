@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <admin  translate="label" module="accelerator">
+            <groups>
+                <eacc_group translate="label">
+                    <label>eworld Accelerator</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <eacc_dir translate="label">
+                            <label>eworld Accelerator Directory</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>full path to eworld Accelerator directory like /home/mywebsite/htdocs/eworld-accelerator/</comment>
+                        </eacc_dir>
+                    </fields>
+                </eacc_group>
+            </groups>
+        </admin>
+    </sections>
+</config>

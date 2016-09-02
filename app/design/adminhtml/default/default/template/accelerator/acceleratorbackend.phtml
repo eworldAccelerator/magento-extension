@@ -1,0 +1,109 @@
+<div class="content-header">
+	<h3 class="icon-head head-system-account">eworld Acccelerator</h3>
+</div>
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">Informations</h4>
+
+		<div class="form-buttons"></div>
+	</div>
+	<div id="base_fieldset" class="fieldset ">
+		<div class="hor-scroll">
+			<p>eworld Accelerator <?php echo $this->eaccVersion; ?> speed up your website, following Google PageSpeed and YSlow
+				recommandations.</p>
+
+			<p>For more information, visit <a target="_blank" href="http://www.eworld-accelerator.com">http://www.eworld-accelerator.com</a>
+				or your <a target="_blank" href="http://customer.eworld-accelerator.com/">eworld
+					Accelerator's account</a>.</p>
+			<br />
+			<table cellspacing="0" class="form-list">
+				<tbody>
+				<tr>
+					<td style="padding-right:10px;">
+						<form id="eaccLink1" method="get" action="<?php echo $this->dashboardURL; ?>" target="_blank">
+							<input type="submit" class="form-button"
+							       value="Dashboard"/>
+						</form>
+					</td>
+					<td style="padding-right:10px;">
+						<form id="eaccLink2" method="get" action="<?php echo $this->configurationURL; ?>" target="_blank">
+							<input type="submit" class="form-button"
+							       value="Configuration"/>
+						</form>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<?php if ($this->eaccIsThereUpdate) : ?><div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">New version !</h4>
+
+		<div class="form-buttons"></div>
+	</div>
+	<div id="base_fieldset" class="fieldset ">
+		<div class="hor-scroll">
+			<p>An update of eworld Accelerator is available.</p>
+
+			<form id="eaccLinkUpdate" method="get" action="<?php echo $this->updateURL; ?>" target="_blank">
+				<input type="submit" class="form-button"
+				       value="Update"/>
+			</form>
+		</div>
+	</div>
+</div><?php endif; ?>
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">Actions</h4>
+
+		<div class="form-buttons"></div>
+	</div>
+	<div id="base_fieldset" class="fieldset ">
+		<div class="hor-scroll">
+			<?php if (empty($this->eaccVersion)) : ?>
+			<p>The eworld Accelerator directory setted in Magento Configuration seems to be incorrect. This parameter is mandatory for this module to work.</p>
+			<?php if (defined('EWORLD_ACCELERATOR_DIR')) : ?><p><strong><i><?php echo EWORLD_ACCELERATOR_DIR; ?></i></strong> seems to be the correct directory.</p><?php endif; ?>
+			<p>Please, reset it in <i>Menu > System > Configuration > Advanced > Admin > eworld Accelerator</i></p>
+			<?php else : ?>
+			<table cellspacing="0" class="form-list">
+				<tbody>
+				<tr>
+					<td style="padding-right:10px;">
+						<form id="eaccForm1" method="post" action="">
+							<input type="hidden"
+							       value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>"
+							       name="form_key">
+							<input type="hidden" name="submitDeleteAll" value="1"/>
+							<input type="submit" class="form-button"
+							       value="Delete all cache files"/>
+						</form>
+					</td>
+					<td style="padding-right:10px;">
+						<form id="eaccForm2" method="post" action="">
+							<input type="hidden"
+							       value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>"
+							       name="form_key">
+							<input type="hidden" name="submitGC" value="1"/>
+							<input type="submit" class="form-button"
+							       value="Garbage Collector"/>
+						</form>
+					</td>
+					<?php if ($this->eaccIsCdnActive) : ?><td style="padding-right:10px;">
+						<form id="eaccForm3" method="post" action="">
+							<input type="hidden"
+							       value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>"
+							       name="form_key">
+							<input type="hidden" name="submitPurgeCDN" value="1"/>
+							<input type="submit" class="form-button"
+							       value="Purge CDN"/>
+						</form>
+					</td><?php endif; ?>
+				</tr>
+				</tbody>
+			</table>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
