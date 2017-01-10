@@ -48,12 +48,13 @@ class EworldAccelerator_Accelerator_Model_Observer {
 		$items = $order->getAllItems();
 		foreach ($items as $currentItem) {
 			/** @var Mage_Sales_Model_Order_Item $currentItem */
-			$stocklevel = self::getProductStock($currentItem->getProduct());
+			$product = Mage::getModel('catalog/product')->load($currentItem->getProductId());
+			$stocklevel = self::getProductStock($product);
 			Mage::log('qty ordered='.$currentItem->getQtyInvoiced());
 			Mage::log('stock='.$stocklevel);
 			if ($currentItem->getQtyInvoiced() >= $stocklevel || $stocklevel == 0) {
-				self::deleteCacheForProduct($currentItem->getProduct());
-				Mage::log('Trigger orderPaid => cache deleted for product '.$currentItem->getProduct()->getSku());
+				self::deleteCacheForProduct($product);
+				Mage::log('Trigger orderPaid => cache deleted for product '.$product->getSku());
 			}
 		}
 	}
@@ -62,13 +63,14 @@ class EworldAccelerator_Accelerator_Model_Observer {
 		/** @var Mage_Sales_Model_Order_Item $item */
 		$item = $observer->getEvent()->getItem();
 
-		$stocklevel = self::getProductStock($item->getProduct());
+		$product = Mage::getModel('catalog/product')->load($item->getProductId());
+		$stocklevel = self::getProductStock($product);
 		Mage::log('qty canceled='.$item->getQtyCanceled());
 		Mage::log('stock='.$stocklevel);
 
 		if ($stocklevel <= 1 || $item->getQtyCanceled() >= $stocklevel) {
-			self::deleteCacheForProduct($item->getProduct());
-			Mage::log('Trigger orderCanceled => cache deleted for product '.$item->getProduct()->getSku());
+			self::deleteCacheForProduct($product);
+			Mage::log('Trigger orderCanceled => cache deleted for product '.$product->getSku());
 		}
 	}
 
