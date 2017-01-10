@@ -7,6 +7,7 @@ class EworldAccelerator_Accelerator_Helper_Data extends Mage_Core_Helper_Abstrac
 	private $api;
 
 	function __construct() {
+		// TODO Maybe use const EWORLD_ACCELERATOR_DIR
 		$this->directory = Mage::getStoreConfig('admin/eacc_group/eacc_dir');
 	}
 

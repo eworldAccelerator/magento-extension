@@ -26,9 +26,9 @@
             <cms_page_prepare_save>
                 <observers>
                     <cms_page_prepare_save_handler>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>accelerator/observer</class>
-                        <method>CmsSave</method>
+                        <method>cmsSave</method>
                         <args></args>
                     </cms_page_prepare_save_handler>
                 </observers>
@@ -36,9 +36,9 @@
             <adminhtml_cmspage_on_delete>
                 <observers>
                     <adminhtml_cmspage_on_delete_handler>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>accelerator/observer</class>
-                        <method>CmsSave</method>
+                        <method>cmsSave</method>
                         <args></args>
                     </adminhtml_cmspage_on_delete_handler>
                 </observers>
@@ -46,9 +46,9 @@
             <catalog_product_prepare_save>
                 <observers>
                     <catalog_product_to_website_change_handler>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>accelerator/observer</class>
-                        <method>ProductSave</method>
+                        <method>productSave</method>
                         <args></args>
                     </catalog_product_to_website_change_handler>
                 </observers>
@@ -56,13 +56,33 @@
             <catalog_category_prepare_save>
                 <observers>
                     <catalog_category_prepare_save_handler>
-                        <type>model</type>
+                        <type>singleton</type>
                         <class>accelerator/observer</class>
-                        <method>CategorySave</method>
+                        <method>categorySave</method>
                         <args></args>
                     </catalog_category_prepare_save_handler>
                 </observers>
             </catalog_category_prepare_save>
+            <sales_order_invoice_pay>
+                <observers>
+                    <catalog_category_prepare_save_handler>
+                        <type>singleton</type>
+                        <class>accelerator/observer</class>
+                        <method>orderPaid</method>
+                        <args></args>
+                    </catalog_category_prepare_save_handler>
+                </observers>
+            </sales_order_invoice_pay>
+            <sales_order_item_cancel>
+                <observers>
+                    <catalog_category_prepare_save_handler>
+                        <type>singleton</type>
+                        <class>accelerator/observer</class>
+                        <method>orderCanceled</method>
+                        <args></args>
+                    </catalog_category_prepare_save_handler>
+                </observers>
+            </sales_order_item_cancel>
         </events>
     </global>
     <admin>

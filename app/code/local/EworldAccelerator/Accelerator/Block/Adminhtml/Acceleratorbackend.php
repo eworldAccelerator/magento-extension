@@ -22,6 +22,7 @@ class EworldAccelerator_Accelerator_Block_Adminhtml_Acceleratorbackend extends M
 		$this->helper = Mage::helper('accelerator');
 
 		if (isset($_POST['submitDeleteAll']) && $_POST['submitDeleteAll'] == 1) {
+			Mage::log('deleteAll');
 			if ($this->helper->deleteAllCache()) {
 				Mage::getSingleton('core/session')->addSuccess('All cache files have been deleted');
 			}
